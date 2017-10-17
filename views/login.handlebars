@@ -1,0 +1,50 @@
+<div id="body"></div>
+<script type="text/babel">
+
+    var Login = React.createClass({
+        
+        render: function() {
+            return(
+                <div className="login-form">
+                    <h2>Login</h2>
+                    <form action='/loginUser' method='post'>
+                        <div className="form-group">
+                            <label for='email'>Email:</label>
+                            <input type='text' name='email'/>
+                            <label for='password'>Password:</label>
+                            <input type='password' name='password'/>
+                            <button type='submit' className='btn btn-primary'>Login</button>
+                        </div>
+                    </form>
+                </div>
+                )
+        }
+    })
+    
+    var Register = React.createClass({
+        render: function() {
+            return(
+                <div className='register'>
+                <h2>Register</h2>
+                    <form>
+                        <div className="form-group">
+                            <label for='email'>Email:</label>
+                            <input type='text' name='email'/>
+                            <label for='password'>Password:</label>
+                            <input type='password' name='password'/>
+                            <button type='submit' className='btn btn-primary'>Register</button>
+                        </div>
+                    </form>
+                </div>
+                )
+        }
+    })
+    
+    ReactDOM.render(
+        <div>
+            <Login/>
+            <Register/>
+        </div>,
+        document.getElementById("body")
+        );
+</script>
