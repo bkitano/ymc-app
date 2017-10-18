@@ -42,7 +42,14 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 // ++++++++++ ROUTES +++++++++++
 app.get('/', function(req, res) {
-    res.render('test');
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+        // User is signed in.
+            res.render('test', {name:user.email});
+        } else {
+            res.render('test');
+        }
+    });
 });
 
 app.get('/login', function(req, res) {

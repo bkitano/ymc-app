@@ -22,21 +22,35 @@
     })
     
     var Register = React.createClass({
+        
+        getInitialState: function() {
+            return({
+                validated: false
+            })
+        },
+        
         render: function() {
             return(
                 <div className='register'>
                 <h2>Register</h2>
-                    <form>
+                    <form action='/registerUser' method='post'>
                         <div className="form-group">
                             <label for='email'>Email:</label>
                             <input type='text' name='email'/>
                             <label for='password'>Password:</label>
-                            <input type='password' name='password'/>
+                            <input type='password' name='password' onChange={this.validate}/>
                             <button type='submit' className='btn btn-primary'>Register</button>
+                            <h3 hidden={this.state.validated}>Password must be at least 6 characters.</h3>
                         </div>
                     </form>
                 </div>
                 )
+        },
+        validate: function(e) {
+            var password = e.target.value;
+            if(password.length >= 6) {
+                this.setState({validated: true});
+            }
         }
     })
     
